@@ -10,174 +10,12 @@
 <style>
   /* ============================================================
      GUEST LIST — edit this array to add your own guests.
-     Each guest needs: name, table (shown big), and an optional
-     note (e.g. "Bride's side" or "Near the dance floor").
-     Add as many rows as you need, separated by commas.
      ============================================================ */
 </style>
 <script>
   const GUESTS = [
     { name: "Alicia Littlewood", table: "Bridal" },
-    { name: "Brandon Littlewood", table: "Bridal" },
-    { name: "Rhiannon Wheatland", table: "Bridal" },
-    { name: "Matthew Wheatland", table: "Bridal" },
-    { name: "Cameron Littlewood", table: "Bridal" },
-    { name: "Jason Sculli", table: "Bridal" },
-    { name: "Elissa Burton", table: "Bridal" },
-    { name: "Candice Ible", table: "Bridal" },
-    { name: "Gabby Vella", table: "Bridal" },
-    { name: "Steve Martignago", table: "Bridal" },
-    { name: "Kerrie-Ann Pope", table: "7" },
-    { name: "Peter Pope", table: "7" },
-    { name: "Alfred Matterson", table: "7" },
-    { name: "Melissa Pajtler", table: "7" },
-    { name: "Joe Pajtler", table: "7" },
-    { name: "Declan Pajtler", table: "7" },
-    { name: "Callum Pajtler", table: "7" },
-    { name: "Janette Clark", table: "7" },
-    { name: "Greame Clark", table: "7" },
-    { name: "Chris Gillespie", table: "7" },
-    { name: "Jill Weiss", table: "6" },
-    { name: "Brett Weiss", table: "6" },
-    { name: "Debbie Sullivan", table: "6" },
-    { name: "Katie Semann", table: "6" },
-    { name: "Norm Semann", table: "6" },
-    { name: "Pina Moore", table: "6" },
-    { name: "Graham Moore", table: "6" },
-    { name: "Sheri Hosking", table: "6" },
-    { name: "Jesse Hosking", table: "6" },
-    { name: "Michelle Arnall", table: "6" },
-    { name: "Ben Weiss", table: "5" },
-    { name: "Natasha Weiss", table: "5" },
-    { name: "Sarah Weiss", table: "5" },
-    { name: "Jack Haggett", table: "5" },
-    { name: "Lily Moore", table: "5" },
-    { name: "Zara Fawcett", table: "5" },
-    { name: "Jayden Fawcett", table: "5" },
-    { name: "Todd Burton", table: "5" },
-    { name: "Ryan Ryan McInally", table: "5" },
-    { name: "Grant Ible", table: "5" },
-    { name: "Breanne Bradley", table: "8" },
-    { name: "Matthew Baso", table: "8" },
-    { name: "Alfred Bradley", table: "8" },
-    { name: "Judy Cobb", table: "8" },
-    { name: "Michelle Bradley", table: "8" },
-    { name: "Samantha McGinn", table: "8" },
-    { name: "Cherie Potts", table: "8" },
-    { name: "Warren Potts", table: "8" },
-    { name: "Courtney Kitchener", table: "8" },
-    { name: "Joe Kitchener", table: "8" },
-    { name: "Vanessa Crowe", table: "9" },
-    { name: "Richard Crowe", table: "9" },
-    { name: "Vanessa Walsh", table: "9" },
-    { name: "Michael McNamara", table: "9" },
-    { name: "Cathy Banks", table: "9" },
-    { name: "Elizabeth Crowe", table: "9" },
-    { name: "Theresa Tangye", table: "9" },
-    { name: "Desiree Hurst", table: "9" },
-    { name: "Leah Baxter", table: "9" },
-    { name: "Teneal O'Brien", table: "9" },
-    { name: "Guss Charlmers", table: "10" },
-    { name: "Carole Charlmers", table: "10" },
-    { name: "John Ivanow", table: "10" },
-    { name: "Julie Ivanow", table: "10" },
-    { name: "Malcom Lugg", table: "10" },
-    { name: "Robyn Loyd", table: "10" },
-    { name: "Jodie Tuchel", table: "10" },
-    { name: "Rebecca Irsaj", table: "10" },
-    { name: "Gonca Sobaci", table: "10" },
-    { name: "Joseph Malenica", table: "10" },
-    { name: "Sylvia Roman", table: "10" },
-    { name: "Emma Bloom", table: "12" },
-    { name: "Ezekiel Theodore", table: "12" },
-    { name: "Alex Belford", table: "12" },
-    { name: "Jonathan Murphy", table: "12" },
-    { name: "Emily Potts", table: "12" },
-    { name: "Lachlan Potts", table: "12" },
-    { name: "Felicity Robinson", table: "12" },
-    { name: "Tadhg Wood", table: "12" },
-    { name: "Dominika Faber", table: "12" },
-    { name: "Ryan Faber", table: "12" },
-    { name: "Isabel Marmora", table: "11" },
-    { name: "Jason Holder", table: "11" },
-    { name: "Nicolai Charlie", table: "11" },
-    { name: "Sofia Sculli", table: "11" },
-    { name: "Dave Maggs", table: "11" },
-    { name: "Shabna Maggs", table: "11" },
-    { name: "Belinda Buckley", table: "11" },
-    { name: "Jasmine Martignago", table: "11" },
-    { name: "David Charan", table: "11" },
-    { name: "Shweta Charan", table: "11" },
-    { name: "Carlton Littlewood", table: "1" },
-    { name: "Wendy Littlewood", table: "1" },
-    { name: "Casey Littlewood", table: "1" },
-    { name: "Lilas Littlewood", table: "1" },
-    { name: "Rachel Littlewood", table: "1" },
-    { name: "Wendy Vanjor", table: "1" },
-    { name: "Carl Vanjor", table: "1" },
-    { name: "Vidya Godbole", table: "1" },
-    { name: "Vinayak Godbole", table: "1" },
-    { name: "Peter Godfrey", table: "1" },
-    { name: "Claudine Ross", table: "1" },
-    { name: "Dudley Littlewood", table: "2" },
-    { name: "Hazel Littlewood", table: "2" },
-    { name: "Karen Littlewood", table: "2" },
-    { name: "John Fitzgibbon", table: "2" },
-    { name: "Steph Littlewood", table: "2" },
-    { name: "Renee Jansen", table: "2" },
-    { name: "Charlotte Van Leeuwin", table: "2" },
-    { name: "Johnathan Van Leeuwin", table: "2" },
-    { name: "Jason VanJour", table: "2" },
-    { name: "Natalie VanJour", table: "2" },
-    { name: "Brian VanJour", table: "2" },
-    { name: " Hugo Photography", table: "3" },
-    { name: " Hugo Photography", table: "3" },
-    { name: " Hugo Photography", table: "3" },
-    { name: " Hugo Photography", table: "3" },
-    { name: " Robert Galati", table: "3" },
-    { name: " Hey Mr DJ", table: "3" },
-    { name: "Luke Sculli", table: "4" },
-    { name: "Kiara Sculli", table: "4" },
-    { name: "Stephen Sculli", table: "4" },
-    { name: "Kamela Sculli", table: "4" },
-    { name: "Doris Sculli", table: "4" },
-    { name: "Vince Sculli", table: "4" },
-    { name: "Matthew Sculli", table: "4" },
-    { name: "Rachel Galea", table: "4" },
-    { name: "Drew Rae", table: "4" },
-    { name: "Emma Green", table: "4" },
-    { name: "Joseph Gauci", table: "14" },
-    { name: "Donna Gauci", table: "14" },
-    { name: "Joe Gauci", table: "14" },
-    { name: "Damien Gauci", table: "14" },
-    { name: "Montana Jays", table: "14" },
-    { name: "Adrian Gauci", table: "14" },
-    { name: "Analise Micallef", table: "14" },
-    { name: "Alex Webster", table: "14" },
-    { name: "Bianca Webster", table: "14" },
-    { name: "Julio Ogata", table: "13" },
-    { name: "Peter Trevitt", table: "13" },
-    { name: "Amanda Trevitt", table: "13" },
-    { name: "Danny Farrar", table: "13" },
-    { name: "Vickie Farrar", table: "13" },
-    { name: "David Taliana", table: "13" },
-    { name: "Jo Taliana", table: "13" },
-    { name: "Graham Don", table: "13" },
-    { name: "Linda Nguyen", table: "13" },
-    { name: "Jacob Shehata", table: "15" },
-    { name: "Holly Shehata", table: "15" },
-    { name: "Christine Ramos", table: "15" },
-    { name: "Jose Ramos", table: "15" },
-    { name: "Lucas Cleverly", table: "15" },
-    { name: "Jenni Cleverly", table: "15" },
-    { name: "Tony Behan", table: "15" },
-    { name: "Belinda Behan", table: "15" },
-    { name: "Daniel Bezzina", table: "15" },
-    { name: "Therese Bezzina", table: "15" }
-
-
-    // Add more guests here, e.g.:
-    // { name: "Full Name", table: "Table 5", note: "Optional note" },
+    { name: "Brandon Littlewood", table: "Bridal" }
   ];
 </script>
 
@@ -223,7 +61,6 @@
     50%{ background-position: 10% 6%, 90% 92%, 0 0; }
   }
 
-  /* fine grain overlay for a paper/print feel */
   body::before{
     content:"";
     position:fixed; inset:0;
@@ -270,7 +107,7 @@
   .card-inner{
     position: relative;
     width: 100%;
-    min-height: 500px;
+    min-height: 520px;
     transform-style: preserve-3d;
     transition: transform 1s cubic-bezier(.4,.15,.2,1);
   }
@@ -294,7 +131,6 @@
     flex-direction:column;
   }
 
-  /* double hairline frame, like formal stationery */
   .face::before{
     content:"";
     position:absolute; inset: 9px;
@@ -335,7 +171,7 @@
     text-align:center;
     color: var(--text-2);
     font-size: 13.5px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   .field{ position:relative; margin-bottom: 8px; }
@@ -362,7 +198,19 @@
   }
   .field input:focus ~ .underline{ width:100%; }
 
-  .results{ margin-top: 14px; flex:1; overflow-y:auto; }
+  /* PHOTO STYLING */
+  .couple-photo{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid var(--gold);
+    margin: 14px 0 6px;
+    display: block;
+  }
+  .couple-photo.hidden{ display: none; }
+
+  .results{ margin-top: 10px; flex:1; overflow-y:auto; }
 
   .result-row{
     width:100%;
@@ -390,13 +238,13 @@
     color: var(--text-2);
     font-size: 13px;
     text-align:center;
-    margin-top: 24px;
+    margin-top: 12px;
     line-height:1.6;
     font-style: italic;
   }
   .no-match strong{ color: var(--text-1); font-style:normal; }
 
-  /* back face */
+  /* Back face elements */
   .seal{
     width: 76px; height: 76px;
     display:flex; align-items:center; justify-content:center;
@@ -494,6 +342,7 @@
     .table-num{ font-size: 46px; }
     .face{ padding: 30px 22px 24px; }
     .sprig{ width: 96px; }
+    .couple-photo{ height: 180px; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -526,6 +375,9 @@
           <input type="text" id="searchInput" placeholder="Start typing your name…" autocomplete="off" autocapitalize="words">
           <div class="underline"></div>
         </div>
+
+        <!-- PHOTO CONTAINER -->
+        <img id="couplePhoto" class="couple-photo" src="google.jpg" alt="Couple Photo">
 
         <div class="results" id="results">
           <div class="empty-hint" id="emptyHint">Your seat is waiting — just start typing.</div>
@@ -562,16 +414,17 @@
 </div>
 
 <script>
-  const input      = document.getElementById('searchInput');
-  const resultsEl  = document.getElementById('results');
-  const emptyHint  = document.getElementById('emptyHint');
-  const cardInner  = document.getElementById('cardInner');
-  const againBtn   = document.getElementById('againBtn');
+  const input       = document.getElementById('searchInput');
+  const resultsEl   = document.getElementById('results');
+  const emptyHint   = document.getElementById('emptyHint');
+  const cardInner   = document.getElementById('cardInner');
+  const againBtn    = document.getElementById('againBtn');
+  const couplePhoto = document.getElementById('couplePhoto');
 
-  const resultName = document.getElementById('resultName');
-  const resultTable= document.getElementById('resultTable');
-  const resultNote = document.getElementById('resultNote');
-  const sealInitial= document.getElementById('sealInitial');
+  const resultName  = document.getElementById('resultName');
+  const resultTable = document.getElementById('resultTable');
+  const resultNote  = document.getElementById('resultNote');
+  const sealInitial = document.getElementById('sealInitial');
 
   function normalize(str){
     return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
@@ -583,8 +436,11 @@
 
     if(!q){
       resultsEl.appendChild(emptyHint);
+      couplePhoto.classList.remove('hidden');
       return;
     }
+
+    couplePhoto.classList.add('hidden');
 
     const matches = GUESTS.filter(g => {
       const normalName = normalize(g.name);
