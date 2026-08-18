@@ -17,7 +17,7 @@
 </style>
 <script>
   const GUESTS = [
-     { name: "Alicia Littlewood", table: "Bridal" },
+    { name: "Alicia Littlewood", table: "Bridal" },
     { name: "Brandon Littlewood", table: "Bridal" },
     { name: "Rhiannon Wheatland", table: "Bridal" },
     { name: "Matthew Wheatland", table: "Bridal" },
@@ -130,12 +130,12 @@
     { name: "Jason VanJour", table: "2" },
     { name: "Natalie VanJour", table: "2" },
     { name: "Brian VanJour", table: "2" },
-    { name: "Photography1 Hugo ", table: "3" },
-    { name: "Photography2 Hugo ", table: "3" },
-    { name: "Photography3 Hugo ", table: "3" },
-    { name: "Photography4 Hugo ", table: "3" },
-    { name: "Galati Robert ", table: "3" },
-    { name: "DJ Hey Mr ", table: "3" },
+    { name: " Hugo Photography", table: "3" },
+    { name: " Hugo Photography", table: "3" },
+    { name: " Hugo Photography", table: "3" },
+    { name: " Hugo Photography", table: "3" },
+    { name: " Robert Galati", table: "3" },
+    { name: " Hey Mr DJ", table: "3" },
     { name: "Luke Sculli", table: "4" },
     { name: "Kiara Sculli", table: "4" },
     { name: "Stephen Sculli", table: "4" },
@@ -164,16 +164,16 @@
     { name: "Jo Taliana", table: "13" },
     { name: "Graham Don", table: "13" },
     { name: "Linda Nguyen", table: "13" },
-    { name: "Jacob Shehata", table: "12" },
-    { name: "Holly Shehata", table: "12" },
-    { name: "Christine Ramos", table: "12" },
-    { name: "Jose Ramos", table: "12" },
-    { name: "Lucas Cleverly", table: "12" },
-    { name: "Jenni Cleverly", table: "12" },
-    { name: "Tony Behan", table: "12" },
-    { name: "Belinda Behan", table: "12" },
-    { name: "Daniel Bezzina", table: "12" },
-    { name: "Therese Bezzina", table: "12" }
+    { name: "Jacob Shehata", table: "15" },
+    { name: "Holly Shehata", table: "15" },
+    { name: "Christine Ramos", table: "15" },
+    { name: "Jose Ramos", table: "15" },
+    { name: "Lucas Cleverly", table: "15" },
+    { name: "Jenni Cleverly", table: "15" },
+    { name: "Tony Behan", table: "15" },
+    { name: "Belinda Behan", table: "15" },
+    { name: "Daniel Bezzina", table: "15" },
+    { name: "Therese Bezzina", table: "15" }
 
 
     // Add more guests here, e.g.:
@@ -586,7 +586,20 @@
       return;
     }
 
-    const matches = GUESTS.filter(g => normalize(g.name).includes(q));
+    const matches = GUESTS.filter(g => {
+      const normalName = normalize(g.name);
+      
+      // 1. Direct match (e.g., "Alicia Littlewood")
+      if (normalName.includes(q)) return true;
+
+      // 2. Reversed name match (e.g., "Littlewood Alicia")
+      const reversedName = normalName.split(/\s+/).reverse().join(' ');
+      if (reversedName.includes(q)) return true;
+
+      // 3. Multi-word search matching (matches individual words regardless of order)
+      const queryWords = q.split(/\s+/);
+      return queryWords.every(word => normalName.includes(word));
+    });
 
     if(matches.length === 0){
       const div = document.createElement('div');
