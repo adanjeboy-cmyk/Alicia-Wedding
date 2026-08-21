@@ -148,16 +148,16 @@
     text-align:center;
   }
 
- /* Faded couple photo background overlay - Full Card Cover */
-  .card-back-bg{
+ /* Full-card faded couple photo background */
+  .card-back::before {
+    content: "";
     position: absolute;
-    inset: -38px -30px -30px -30px; /* Expands to fill the padding area of the parent */
+    inset: 0;
     background-image: url('couple.jpeg');
     background-size: cover;
-    background-position: center 25%; /* Centers on the couple's faces */
-    opacity: 0.18; /* Subtle watermark opacity so text stays perfectly readable */
-    filter: sepia(25%) contrast(110%);
-    mix-blend-mode: multiply;
+    background-position: center 20%;
+    opacity: 0.28;
+    filter: sepia(15%) contrast(105%);
     pointer-events: none;
     z-index: 0;
   }
