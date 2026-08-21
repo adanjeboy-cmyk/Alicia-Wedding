@@ -1,662 +1,964 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<title>Find Your Table</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1"
+  >
 
-<script>
-  const GUESTS = [
-     { name: "Alicia Littlewood", table: "Bridal" },
-    { name: "Brandon Littlewood", table: "Bridal" },
-    { name: "Rhiannon Wheatland", table: "Bridal" },
-    { name: "Matthew Wheatland", table: "Bridal" },
-    { name: "Cameron Littlewood", table: "Bridal" },
-    { name: "Jason Sculli", table: "Bridal" },
-    { name: "Elissa Burton", table: "Bridal" },
-    { name: "Candice Ible", table: "Bridal" },
-    { name: "Gabby Vella", table: "Bridal" },
-    { name: "Steve Martignago", table: "Bridal" },
+  <title>Find Your Table</title>
 
-    { name: "Kerrie-Ann Pope", table: "7" },
-    { name: "Peter Pope", table: "7" },
-    { name: "Alfred Matterson", table: "7" },
-    { name: "Melissa Pajtler", table: "7" },
-    { name: "Joe Pajtler", table: "7" },
-    { name: "Declan Pajtler", table: "7" },
-    { name: "Callum Pajtler", table: "7" },
-    { name: "Janette Clark", table: "7" },
-    { name: "Greame Clark", table: "7" },
-    { name: "Chris Gillespie", table: "7" },
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
 
-    { name: "Jill Weiss", table: "6" },
-    { name: "Brett Weiss", table: "6" },
-    { name: "Debbie Sullivan", table: "6" },
-    { name: "Katie Semann", table: "6" },
-    { name: "Norm Semann", table: "6" },
-    { name: "Pina Moore", table: "6" },
-    { name: "Graham Moore", table: "6" },
-    { name: "Sheri Hosking", table: "6" },
-    { name: "Jesse Hosking", table: "6" },
-    { name: "Michelle Arnall", table: "6" },
+  <script>
+    const GUESTS = [
+      { name: "Alicia Littlewood", table: "Bridal" },
+      { name: "Brandon Littlewood", table: "Bridal" },
+      { name: "Rhiannon Wheatland", table: "Bridal" },
+      { name: "Matthew Wheatland", table: "Bridal" },
+      { name: "Cameron Littlewood", table: "Bridal" },
+      { name: "Jason Sculli", table: "Bridal" },
+      { name: "Elissa Burton", table: "Bridal" },
+      { name: "Candice Ible", table: "Bridal" },
+      { name: "Gabby Vella", table: "Bridal" },
+      { name: "Steve Martignago", table: "Bridal" },
 
-    { name: "Ben Weiss", table: "5" },
-    { name: "Natasha Weiss", table: "5" },
-    { name: "Sarah Weiss", table: "5" },
-    { name: "Jack Haggett", table: "5" },
-    { name: "Lily Moore", table: "5" },
-    { name: "Zara Fawcett", table: "5" },
-    { name: "Jayden Fawcett", table: "5" },
-    { name: "Todd Burton", table: "5" },
-    { name: "Ryan Ryan McInally", table: "5" },
-    { name: "Grant Ible", table: "5" },
+      { name: "Kerrie-Ann Pope", table: "7" },
+      { name: "Peter Pope", table: "7" },
+      { name: "Alfred Matterson", table: "7" },
+      { name: "Melissa Pajtler", table: "7" },
+      { name: "Joe Pajtler", table: "7" },
+      { name: "Declan Pajtler", table: "7" },
+      { name: "Callum Pajtler", table: "7" },
+      { name: "Janette Clark", table: "7" },
+      { name: "Greame Clark", table: "7" },
+      { name: "Chris Gillespie", table: "7" },
 
-    { name: "Breanne Bradley", table: "8" },
-    { name: "Matthew Baso", table: "8" },
-    { name: "Alfred Bradley", table: "8" },
-    { name: "Judy Cobb", table: "8" },
-    { name: "Michelle Bradley", table: "8" },
-    { name: "Samantha McGinn", table: "8" },
-    { name: "Cherie Potts", table: "8" },
-    { name: "Warren Potts", table: "8" },
-    { name: "Courtney Kitchener", table: "8" },
-    { name: "Joe Kitchener", table: "8" },
+      { name: "Jill Weiss", table: "6" },
+      { name: "Brett Weiss", table: "6" },
+      { name: "Debbie Sullivan", table: "6" },
+      { name: "Katie Semann", table: "6" },
+      { name: "Norm Semann", table: "6" },
+      { name: "Pina Moore", table: "6" },
+      { name: "Graham Moore", table: "6" },
+      { name: "Sheri Hosking", table: "6" },
+      { name: "Jesse Hosking", table: "6" },
+      { name: "Michelle Arnall", table: "6" },
 
-    { name: "Vanessa Crowe", table: "9" },
-    { name: "Richard Crowe", table: "9" },
-    { name: "Vanessa Walsh", table: "9" },
-    { name: "Michael McNamara", table: "9" },
-    { name: "Cathy Banks", table: "9" },
-    { name: "Elizabeth Crowe", table: "9" },
-    { name: "Theresa Tangye", table: "9" },
-    { name: "Desiree Hurst", table: "9" },
-    { name: "Leah Baxter", table: "9" },
-    { name: "Teneal O'Brien", table: "9" },
+      { name: "Ben Weiss", table: "5" },
+      { name: "Natasha Weiss", table: "5" },
+      { name: "Sarah Weiss", table: "5" },
+      { name: "Jack Haggett", table: "5" },
+      { name: "Lily Moore", table: "5" },
+      { name: "Zara Fawcett", table: "5" },
+      { name: "Jayden Fawcett", table: "5" },
+      { name: "Todd Burton", table: "5" },
+      { name: "Ryan Ryan McInally", table: "5" },
+      { name: "Grant Ible", table: "5" },
 
-    { name: "Guss Charlmers", table: "10" },
-    { name: "Carole Charlmers", table: "10" },
-    { name: "John Ivanow", table: "10" },
-    { name: "Julie Ivanow", table: "10" },
-    { name: "Malcom Lugg", table: "10" },
-    { name: "Robyn Loyd", table: "10" },
-    { name: "Jodie Tuchel", table: "10" },
-    { name: "Rebecca Irsaj", table: "10" },
-    { name: "Gonca Sobaci", table: "10" },
-    { name: "Joseph Malenica", table: "10" },
-    { name: "Sylvia Roman", table: "10" },
+      { name: "Breanne Bradley", table: "8" },
+      { name: "Matthew Baso", table: "8" },
+      { name: "Alfred Bradley", table: "8" },
+      { name: "Judy Cobb", table: "8" },
+      { name: "Michelle Bradley", table: "8" },
+      { name: "Samantha McGinn", table: "8" },
+      { name: "Cherie Potts", table: "8" },
+      { name: "Warren Potts", table: "8" },
+      { name: "Courtney Kitchener", table: "8" },
+      { name: "Joe Kitchener", table: "8" },
 
-    { name: "Emma Bloom", table: "12" },
-    { name: "Ezekiel Theodore", table: "12" },
-    { name: "Alex Belford", table: "12" },
-    { name: "Jonathan Murphy", table: "12" },
-    { name: "Emily Potts", table: "12" },
-    { name: "Lachlan Potts", table: "12" },
-    { name: "Felicity Robinson", table: "12" },
-    { name: "Tadhg Wood", table: "12" },
-    { name: "Dominika Faber", table: "12" },
-    { name: "Ryan Faber", table: "12" },
+      { name: "Vanessa Crowe", table: "9" },
+      { name: "Richard Crowe", table: "9" },
+      { name: "Vanessa Walsh", table: "9" },
+      { name: "Michael McNamara", table: "9" },
+      { name: "Cathy Banks", table: "9" },
+      { name: "Elizabeth Crowe", table: "9" },
+      { name: "Theresa Tangye", table: "9" },
+      { name: "Desiree Hurst", table: "9" },
+      { name: "Leah Baxter", table: "9" },
+      { name: "Teneal O'Brien", table: "9" },
 
-    { name: "Isabel Marmora", table: "11" },
-    { name: "Jason Holder", table: "11" },
-    { name: "Sofia Sculli", table: "11" },
-    { name: "Dave Maggs", table: "11" },
-    { name: "Shabna Maggs", table: "11" },
-    { name: "Belinda Buckley", table: "11" },
-    { name: "Jasmine Martignago", table: "11" },
-    { name: "David Charan", table: "11" },
-    { name: "Shweta Charan", table: "11" },
+      { name: "Guss Charlmers", table: "10" },
+      { name: "Carole Charlmers", table: "10" },
+      { name: "John Ivanow", table: "10" },
+      { name: "Julie Ivanow", table: "10" },
+      { name: "Malcom Lugg", table: "10" },
+      { name: "Robyn Loyd", table: "10" },
+      { name: "Jodie Tuchel", table: "10" },
+      { name: "Rebecca Irsaj", table: "10" },
+      { name: "Gonca Sobaci", table: "10" },
+      { name: "Joseph Malenica", table: "10" },
+      { name: "Sylvia Roman", table: "10" },
 
-    { name: "Carlton Littlewood", table: "1" },
-    { name: "Wendy Littlewood", table: "1" },
-    { name: "Casey Littlewood", table: "1" },
-    { name: "Lilas Littlewood", table: "1" },
-    { name: "Rachel Littlewood", table: "1" },
-    { name: "Wendy Vanjor", table: "1" },
-    { name: "Carl Vanjor", table: "1" },
-    { name: "Vidya Godbole", table: "1" },
-    { name: "Vinayak Godbole", table: "1" },
-    { name: "Peter Godfrey", table: "1" },
-    { name: "Claudine Ross", table: "1" },
+      { name: "Emma Bloom", table: "12" },
+      { name: "Ezekiel Theodore", table: "12" },
+      { name: "Alex Belford", table: "12" },
+      { name: "Jonathan Murphy", table: "12" },
+      { name: "Emily Potts", table: "12" },
+      { name: "Lachlan Potts", table: "12" },
+      { name: "Felicity Robinson", table: "12" },
+      { name: "Tadhg Wood", table: "12" },
+      { name: "Dominika Faber", table: "12" },
+      { name: "Ryan Faber", table: "12" },
 
-    { name: "Dudley Littlewood", table: "2" },
-    { name: "Hazel Littlewood", table: "2" },
-    { name: "Karen Littlewood", table: "2" },
-    { name: "Steph Littlewood", table: "2" },
-    { name: "Renee Jansen", table: "2" },
-    { name: "Charlotte Van Leeuwin", table: "2" },
-    { name: "Johnathan Sherrah", table: "2" },
-    { name: "Jason VanJour", table: "2" },
-    { name: "Natalie VanJour", table: "2" },
-    { name: "Brian VanJour", table: "2" },
-    { name: "Conrad Francis", table: "2" },
-    { name: "Sandra Francis", table: "" },
+      { name: "Isabel Marmora", table: "11" },
+      { name: "Jason Holder", table: "11" },
+      { name: "Sofia Sculli", table: "11" },
+      { name: "Dave Maggs", table: "11" },
+      { name: "Shabna Maggs", table: "11" },
+      { name: "Belinda Buckley", table: "11" },
+      { name: "Jasmine Martignago", table: "11" },
+      { name: "David Charan", table: "11" },
+      { name: "Shweta Charan", table: "11" },
 
-    { name: " Hugo Photography", table: "3" },
-    { name: " Robert Galati", table: "3" },
-    { name: " Hey Mr DJ", table: "3" },
+      { name: "Carlton Littlewood", table: "1" },
+      { name: "Wendy Littlewood", table: "1" },
+      { name: "Casey Littlewood", table: "1" },
+      { name: "Lilas Littlewood", table: "1" },
+      { name: "Rachel Littlewood", table: "1" },
+      { name: "Wendy Vanjor", table: "1" },
+      { name: "Carl Vanjor", table: "1" },
+      { name: "Vidya Godbole", table: "1" },
+      { name: "Vinayak Godbole", table: "1" },
+      { name: "Peter Godfrey", table: "1" },
+      { name: "Claudine Ross", table: "1" },
 
-    { name: "Luke Sculli", table: "4" },
-    { name: "Kiara Sculli", table: "4" },
-    { name: "Stephen Sculli", table: "4" },
-    { name: "Kamela Sculli", table: "4" },
-    { name: "Doris Sculli", table: "4" },
-    { name: "Vince Sculli", table: "4" },
-    { name: "Matthew Sculli", table: "4" },
-    { name: "Rachel Galea", table: "4" },
-    { name: "Drew Rae", table: "4" },
-    { name: "Emma Green", table: "4" },
+      { name: "Dudley Littlewood", table: "2" },
+      { name: "Hazel Littlewood", table: "2" },
+      { name: "Karen Littlewood", table: "2" },
+      { name: "Steph Littlewood", table: "2" },
+      { name: "Renee Jansen", table: "2" },
+      { name: "Charlotte Van Leeuwin", table: "2" },
+      { name: "Johnathan Sherrah", table: "2" },
+      { name: "Jason VanJour", table: "2" },
+      { name: "Natalie VanJour", table: "2" },
+      { name: "Brian VanJour", table: "2" },
+      { name: "Conrad Francis", table: "2" },
+      { name: "Sandra Francis", table: "" },
 
-    { name: "Joseph Gauci", table: "14" },
-    { name: "Donna Gauci", table: "14" },
-    { name: "Joe Gauci", table: "14" },
-    { name: "Damien Gauci", table: "14" },
-    { name: "Montana Jays", table: "14" },
-    { name: "Adrian Gauci", table: "14" },
-    { name: "Analise Micallef", table: "14" },
-    { name: "Alex Webster", table: "14" },
-    { name: "Bianca Webster", table: "14" },
+      { name: "Hugo Photography", table: "3" },
+      { name: "Robert Galati", table: "3" },
+      { name: "Hey Mr DJ", table: "3" },
 
-    { name: "Julio Ogata", table: "13" },
-    { name: "Peter Trevitt", table: "13" },
-    { name: "Amanda Trevitt", table: "13" },
-    { name: "Danny Farrar", table: "13" },
-    { name: "Vickie Farrar", table: "13" },
-    { name: "David Taliana", table: "13" },
-    { name: "Jo Taliana", table: "13" },
-    { name: "Graham Don", table: "13" },
-    { name: "Linda Nguyen", table: "13" },
+      { name: "Luke Sculli", table: "4" },
+      { name: "Kiara Sculli", table: "4" },
+      { name: "Stephen Sculli", table: "4" },
+      { name: "Kamela Sculli", table: "4" },
+      { name: "Doris Sculli", table: "4" },
+      { name: "Vince Sculli", table: "4" },
+      { name: "Matthew Sculli", table: "4" },
+      { name: "Rachel Galea", table: "4" },
+      { name: "Drew Rae", table: "4" },
+      { name: "Emma Green", table: "4" },
 
-    { name: "Jacob Shehata", table: "15" },
-    { name: "Holly Shehata", table: "15" },
-    { name: "Christine Ramos", table: "15" },
-    { name: "Jose Ramos", table: "15" },
-    { name: "Lucas Cleverly", table: "15" },
-    { name: "Jenni Cleverly", table: "15" },
-    { name: "Tony Behan", table: "15" },
-    { name: "Belinda Behan", table: "15" },
-    { name: "Daniel Bezzina", table: "15" },
-    { name: "Therese Bezzina", table: "15" }
-  ];
-</script>
+      { name: "Joseph Gauci", table: "14" },
+      { name: "Donna Gauci", table: "14" },
+      { name: "Joe Gauci", table: "14" },
+      { name: "Damien Gauci", table: "14" },
+      { name: "Montana Jays", table: "14" },
+      { name: "Adrian Gauci", table: "14" },
+      { name: "Analise Micallef", table: "14" },
+      { name: "Alex Webster", table: "14" },
+      { name: "Bianca Webster", table: "14" },
 
-<style>
-  :root{
-    --ink:      #182119;
-    --ink-2:    #223026;
-    --paper:    #fbf6ea;
-    --paper-2:  #f1e8d4;
-    --gold:     #ab8148;
-    --gold-deep:#87642f;
-    --gold-lt:  #d9b98a;
-    --rose:     #bd8778;
-    --text-1:   #292520;
-    --text-2:   #7c7565;
-  }
+      { name: "Julio Ogata", table: "13" },
+      { name: "Peter Trevitt", table: "13" },
+      { name: "Amanda Trevitt", table: "13" },
+      { name: "Danny Farrar", table: "13" },
+      { name: "Vickie Farrar", table: "13" },
+      { name: "David Taliana", table: "13" },
+      { name: "Jo Taliana", table: "13" },
+      { name: "Graham Don", table: "13" },
+      { name: "Linda Nguyen", table: "13" },
 
-  *{ box-sizing: border-box; }
+      { name: "Jacob Shehata", table: "15" },
+      { name: "Holly Shehata", table: "15" },
+      { name: "Christine Ramos", table: "15" },
+      { name: "Jose Ramos", table: "15" },
+      { name: "Lucas Cleverly", table: "15" },
+      { name: "Jenni Cleverly", table: "15" },
+      { name: "Tony Behan", table: "15" },
+      { name: "Belinda Behan", table: "15" },
+      { name: "Daniel Bezzina", table: "15" },
+      { name: "Therese Bezzina", table: "15" }
+    ];
+  </script>
 
-  html, body{ margin:0; padding:0; height:100%; }
+  <style>
+    :root {
+      --ink: #182119;
+      --ink-2: #223026;
+      --paper: #fbf6ea;
+      --paper-2: #f1e8d4;
+      --gold: #ab8148;
+      --gold-deep: #87642f;
+      --gold-lt: #d9b98a;
+      --rose: #bd8778;
+      --text-1: #292520;
+      --text-2: #7c7565;
+    }
 
-  body{
-    font-family:'Work Sans', sans-serif;
-    background:
-      radial-gradient(ellipse 60% 50% at 15% -5%, #263a2d 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 88% 105%, #263a2d 0%, transparent 60%),
-      var(--ink);
-    background-size: 200% 200%, 200% 200%, auto;
-    animation: driftBg 22s ease-in-out infinite;
-    color: var(--text-1);
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding: 28px 18px;
-    -webkit-font-smoothing: antialiased;
-    position:relative;
-    overflow:hidden;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  @keyframes driftBg{
-    0%,100%{ background-position: 0% 0%, 100% 100%, 0 0; }
-    50%{ background-position: 10% 6%, 90% 92%, 0 0; }
-  }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
 
-  body::before{
-    content:"";
-    position:fixed; inset:0;
-    pointer-events:none;
-    opacity:.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
+    body {
+      font-family: "Work Sans", sans-serif;
+      background:
+        radial-gradient(
+          ellipse 60% 50% at 15% -5%,
+          #263a2d 0%,
+          transparent 60%
+        ),
+        radial-gradient(
+          ellipse 60% 50% at 88% 105%,
+          #263a2d 0%,
+          transparent 60%
+        ),
+        var(--ink);
 
-  .frame{
-    width:100%;
-    max-width: 420px;
-    animation: riseIn .9s cubic-bezier(.2,.7,.3,1) both;
-  }
+      color: var(--text-1);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px;
+    }
 
-  @keyframes riseIn{
-    from{ opacity:0; transform: translateY(14px) scale(.985); }
-    to{ opacity:1; transform: translateY(0) scale(1); }
-  }
+    .frame {
+      width: 100%;
+      max-width: 420px;
+    }
 
-  .eyebrow-top{
-    text-align:center;
-    color: var(--gold-lt);
-    font-size: 11px;
-    letter-spacing: .34em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    opacity: .85;
-  }
+    .eyebrow-top {
+      text-align: center;
+      color: var(--gold-lt);
+      font-size: 11px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
 
-  .sprig{
-    display:block;
-    margin: 0 auto 14px;
-    width: 120px;
-    opacity: .8;
-  }
-  .sprig path, .sprig circle{
-    stroke: var(--gold-lt);
-    fill: none;
-  }
+    .stage {
+      perspective: 1700px;
+    }
 
-  .stage{ perspective: 1700px; }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      min-height: 560px;
+      transform-style: preserve-3d;
+      transition: transform 1s cubic-bezier(.4,.15,.2,1);
+    }
 
-  .card-inner{
-    position: relative;
-    width: 100%;
-    min-height: 500px;
-    transform-style: preserve-3d;
-    transition: transform 1s cubic-bezier(.4,.15,.2,1);
-  }
+    .card-inner.revealed {
+      transform: rotateY(180deg);
+    }
 
-  .card-inner.revealed{ transform: rotateY(180deg); }
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      background:
+        radial-gradient(
+          120% 140% at 50% -10%,
+          var(--paper-2) 0%,
+          var(--paper) 45%
+        );
 
-  .face{
-    position:absolute;
-    inset:0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background:
-      radial-gradient(120% 140% at 50% -10%, var(--paper-2) 0%, var(--paper) 45%);
-    border-radius: 2px;
-    box-shadow:
-      0 40px 70px -25px rgba(0,0,0,.55),
-      0 2px 0 rgba(0,0,0,.08),
-      0 0 0 1px rgba(0,0,0,.04);
-    padding: 38px 30px 30px;
-    display:flex;
-    flex-direction:column;
-    overflow: hidden;
-  }
+      border-radius: 2px;
+      box-shadow:
+        0 40px 70px -25px rgba(0,0,0,.55);
 
-  .face::before{
-    content:"";
-    position:absolute; inset: 9px;
-    border: 1px solid rgba(171,129,72,.4);
-    pointer-events:none;
-    z-index: 2;
-  }
-  .face::after{
-    content:"";
-    position:absolute; inset: 13px;
-    border: 1px solid rgba(171,129,72,.18);
-    pointer-events:none;
-    z-index: 2;
-  }
+      padding: 38px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
-  .card-back{
-    transform: rotateY(180deg);
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
+    .face::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(171,129,72,.4);
+      pointer-events: none;
+    }
 
- /* Full-card faded couple photo background */
-  .card-back::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('couple.jpeg');
-    background-size: cover;
-    background-position: center 20%;
-    opacity: 0.28;
-    filter: sepia(15%) contrast(105%);
-    pointer-events: none;
-    z-index: 0;
-  }
+    .card-back {
+      transform: rotateY(180deg);
+      text-align: center;
+      align-items: center;
+    }
 
-  /* Keeps back face content layers above the photo */
-  .card-back > *{
-    position: relative;
-    z-index: 1;
-  }
+    .card-back::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("couple.jpeg");
+      background-size: cover;
+      background-position: center 20%;
+      opacity: 0.18;
+      pointer-events: none;
+    }
 
-  .headline{
-    font-family:'Fraunces', serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-size: 31px;
-    line-height: 1.15;
-    color: var(--text-1);
-    text-align:center;
-    margin: 0 0 6px;
-  }
-  .headline em{
-    font-style: italic;
-    font-weight: 500;
-    color: var(--gold-deep);
-  }
+    .card-back > * {
+      position: relative;
+      z-index: 1;
+    }
 
-  .subline{
-    text-align:center;
-    color: var(--text-2);
-    font-size: 13.5px;
-    margin-bottom: 28px;
-  }
+    .headline {
+      font-family: "Fraunces", serif;
+      font-weight: 600;
+      font-size: 31px;
+      line-height: 1.15;
+      text-align: center;
+      margin: 0 0 6px;
+    }
 
-  .field{ position:relative; margin-bottom: 8px; }
+    .headline em {
+      font-style: italic;
+      color: var(--gold-deep);
+    }
 
-  .field input{
-    width:100%;
-    font-family:'Work Sans', sans-serif;
-    font-size: 16px;
-    padding: 12px 4px 10px;
-    border: none;
-    border-bottom: 1.5px solid #ddd2b8;
-    background: transparent;
-    outline: none;
-    color: var(--text-1);
-    letter-spacing: .01em;
-  }
-  .field input::placeholder{ color:#a79c81; }
+    .subline {
+      text-align: center;
+      color: var(--text-2);
+      font-size: 13.5px;
+      margin-bottom: 28px;
+    }
 
-  .field .underline{
-    position:absolute; left:0; bottom:0;
-    height: 1.5px; width:0;
-    background: linear-gradient(90deg, var(--gold), var(--gold-deep));
-    transition: width .4s cubic-bezier(.4,.2,.2,1);
-  }
-  .field input:focus ~ .underline{ width:100%; }
+    .field {
+      position: relative;
+      margin-bottom: 8px;
+    }
 
-  .results{ margin-top: 14px; flex:1; overflow-y:auto; }
+    .field input {
+      width: 100%;
+      font-family: "Work Sans", sans-serif;
+      font-size: 16px;
+      padding: 12px 4px 10px;
+      border: none;
+      border-bottom: 1.5px solid #ddd2b8;
+      background: transparent;
+      outline: none;
+      color: var(--text-1);
+    }
 
-  .result-row{
-    width:100%;
-    text-align:left;
-    background:none;
-    border:none;
-    border-bottom: 1px solid #ede3ca;
-    padding: 12px 4px;
-    font-family:'Work Sans', sans-serif;
-    font-size: 14.5px;
-    color: var(--text-1);
-    cursor:pointer;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    transition: background .2s ease, padding-left .2s ease;
-  }
-  .result-row:hover, .result-row:focus-visible{
-    background: rgba(171,129,72,.09);
-    padding-left: 8px;
-  }
-  .result-row span.arrow{ color: var(--gold); font-size: 14px; }
+    .field input::placeholder {
+      color: #a79c81;
+    }
 
-  .empty-hint, .no-match{
-    color: var(--text-2);
-    font-size: 13px;
-    text-align:center;
-    margin-top: 24px;
-    line-height:1.6;
-    font-style: italic;
-  }
-  .no-match strong{ color: var(--text-1); font-style:normal; }
+    .field .underline {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1.5px;
+      width: 0;
+      background: linear-gradient(
+        90deg,
+        var(--gold),
+        var(--gold-deep)
+      );
+      transition: width .4s ease;
+    }
 
-  .seal{
-    width: 76px; height: 76px;
-    display:flex; align-items:center; justify-content:center;
-    margin-bottom: 20px;
-    position:relative;
-  }
-  .seal svg{ position:absolute; inset:0; width:100%; height:100%; }
-  .seal-mark{
-    font-family:'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 22px;
-    color: var(--gold-deep);
-    position:relative;
-  }
+    .field input:focus ~ .underline {
+      width: 100%;
+    }
 
-  .back-eyebrow{
-    color: var(--text-2);
-    font-size: 11px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
+    .results {
+      margin-top: 14px;
+      flex: 1;
+      overflow-y: auto;
+    }
 
-  .guest-name{
-    font-family:'Fraunces', serif;
-    font-size: 23px;
-    font-weight: 500;
-    color: var(--text-1);
-    margin-bottom: 20px;
-  }
+    .result-row {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      border-bottom: 1px solid #ede3ca;
+      padding: 12px 4px;
+      font-family: "Work Sans", sans-serif;
+      font-size: 14.5px;
+      color: var(--text-1);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  .divider{
-    width: 90px;
-    height: 10px;
-    margin: 0 auto 20px;
-    opacity:.85;
-  }
+    .empty-hint,
+    .no-match {
+      color: var(--text-2);
+      font-size: 13px;
+      text-align: center;
+      margin-top: 24px;
+      line-height: 1.6;
+      font-style: italic;
+    }
 
-  .table-label{
-    font-size: 11px;
-    letter-spacing:.26em;
-    text-transform:uppercase;
-    color: var(--text-2);
-    margin-bottom: 6px;
-  }
+    .back-eyebrow {
+      color: var(--text-2);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
 
-  .table-num{
-    font-family:'Fraunces', serif;
-    font-weight: 700;
-    font-size: 54px;
-    background: linear-gradient(180deg, var(--text-1), var(--ink-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    line-height: 1;
-    margin-bottom: 12px;
-  }
+    .suggested-results {
+      width: 100%;
+      flex: 1;
+      overflow-y: auto;
+      max-height: 340px;
+    }
 
-  .table-note{
-    color: var(--rose);
-    font-size: 13.5px;
-    font-style: italic;
-    margin-bottom: 30px;
-  }
+    .suggested-result {
+      width: 100%;
+      background: rgba(251,246,234,.8);
+      border: 1px solid rgba(171,129,72,.4);
+      color: var(--text-1);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-family: "Work Sans", sans-serif;
+      font-size: 14px;
+      text-align: left;
+      transition: .2s ease;
+    }
 
-  .again-btn{
-    background:rgba(251, 246, 234, 0.7);
-    border: 1px solid var(--gold);
-    color: var(--gold-deep);
-    font-family:'Work Sans', sans-serif;
-    font-size: 12.5px;
-    letter-spacing:.16em;
-    text-transform: uppercase;
-    padding: 11px 24px;
-    border-radius: 2px;
-    cursor:pointer;
-    backdrop-filter: blur(2px);
-    transition: background .25s ease, color .25s ease, transform .2s ease;
-  }
-  .again-btn:hover{ background: var(--gold); color: var(--paper); transform: translateY(-1px); }
-  .again-btn:active{ transform: translateY(0); }
+    .suggested-result:hover {
+      background: rgba(171,129,72,.15);
+    }
 
-  .foot-note{
-    text-align:center;
-    color: rgba(251,247,239,.42);
-    font-size: 11.5px;
-    margin-top: 22px;
-    letter-spacing:.05em;
-    font-style: italic;
-    font-family:'Fraunces', serif;
-  }
+    .guest-result {
+      width: 100%;
+      text-align: center;
+      display: none;
+    }
 
-  @media (max-width: 380px){
-    .headline{ font-size: 27px; }
-    .table-num{ font-size: 46px; }
-    .face{ padding: 30px 22px 24px; }
-    .sprig{ width: 96px; }
-  }
+    .guest-result.active {
+      display: block;
+    }
 
-  @media (prefers-reduced-motion: reduce){
-    .card-inner, .field .underline, .result-row, .again-btn, .frame, body{ transition: none !important; animation: none !important; }
-  }
-</style>
+    .seal {
+      width: 76px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+
+    .seal svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .seal-mark {
+      font-family: "Fraunces", serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--gold-deep);
+      position: relative;
+    }
+
+    .guest-name {
+      font-family: "Fraunces", serif;
+      font-size: 23px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .table-label {
+      font-size: 11px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      margin-bottom: 6px;
+    }
+
+    .table-num {
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 54px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .again-btn {
+      margin-top: 20px;
+      background: rgba(251,246,234,.8);
+      border: 1px solid var(--gold);
+      color: var(--gold-deep);
+      font-family: "Work Sans", sans-serif;
+      font-size: 12.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      cursor: pointer;
+    }
+
+    .foot-note {
+      text-align: center;
+      color: rgba(251,247,239,.42);
+      font-size: 11.5px;
+      margin-top: 22px;
+      font-style: italic;
+      font-family: "Fraunces", serif;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="frame">
-  <div class="eyebrow-top">You're Invited</div>
+  <div class="frame">
 
-  <svg class="sprig" viewBox="0 0 200 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M100 17 C 70 17 40 6 4 17" stroke-width="1"/>
-    <path d="M100 17 C 130 17 160 6 196 17" stroke-width="1"/>
-    <path d="M30 17 c 4 -8 4 8 8 -6 M46 17 c 4 -8 4 8 8 -6 M62 17 c 4 -8 4 8 8 -6" stroke-width="1"/>
-    <path d="M170 17 c -4 -8 -4 8 -8 -6 M154 17 c -4 -8 -4 8 -8 -6 M138 17 c -4 -8 -4 8 -8 -6" stroke-width="1"/>
-    <circle cx="100" cy="17" r="3.5" stroke-width="1"/>
-  </svg>
+    <div class="eyebrow-top">
+      You're Invited
+    </div>
 
-  <div class="stage">
-    <div class="card-inner" id="cardInner">
+    <div class="stage">
 
-      <!-- FRONT: search -->
-      <div class="face card-front">
-        <div class="headline">Find <em>Your</em> Table</div>
-        <div class="subline">Type your name as it appears on your invitation</div>
+      <div class="card-inner" id="cardInner">
 
-        <div class="field">
-          <input type="text" id="searchInput" placeholder="Start typing your name…" autocomplete="off" autocapitalize="words">
-          <div class="underline"></div>
+        <!-- FRONT CARD -->
+        <div class="face card-front">
+
+          <div class="headline">
+            Find <em>Your</em> Table
+          </div>
+
+          <div class="subline">
+            Type your name as it appears on your invitation
+          </div>
+
+          <form id="searchForm">
+
+            <div class="field">
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Start typing your name…"
+                autocomplete="off"
+                autocapitalize="words"
+              >
+
+              <div class="underline"></div>
+            </div>
+
+            <!-- Hidden submit button -->
+            <button type="submit" hidden>
+              Search
+            </button>
+
+          </form>
+
+          <div class="results" id="results">
+
+            <div
+              class="empty-hint"
+              id="emptyHint"
+            >
+              Your seat is waiting — just start typing.
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="results" id="results">
-          <div class="empty-hint" id="emptyHint">Your seat is waiting — just start typing.</div>
-        </div>
-      </div>
 
-      <!-- BACK: result -->
-      <div class="face card-back">
-        <div class="card-back-bg"></div>
-        <div class="seal">
-          <svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="38" cy="38" r="35" stroke="#ab8148" stroke-width="1.2" fill="none"/>
-            <circle cx="38" cy="38" r="29" stroke="#ab8148" stroke-width="0.8" fill="none" opacity=".6"/>
-            <path d="M38 12 c -3 8 -10 10 -16 9 c 4 5 4 12 0 17 c 6 -2 13 1 16 8 c 3 -7 10 -10 16 -8 c -4 -5 -4 -12 0 -17 c -6 1 -13 -1 -16 -9 Z" fill="none" stroke="#ab8148" stroke-width="0.7" opacity=".5"/>
-          </svg>
-          <span class="seal-mark" id="sealInitial">A</span>
+        <!-- BACK CARD -->
+        <div class="face card-back">
+
+          <!-- SUGGESTED GUESTS -->
+          <div id="suggestionsView">
+
+            <div class="back-eyebrow">
+              Suggested Guests
+            </div>
+
+            <div
+              class="suggested-results"
+              id="suggestedResults"
+            ></div>
+
+          </div>
+
+
+          <!-- SELECTED GUEST RESULT -->
+          <div
+            class="guest-result"
+            id="guestResultView"
+          >
+
+            <div class="seal">
+
+              <svg
+                viewBox="0 0 76 76"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="38"
+                  cy="38"
+                  r="35"
+                  stroke="#ab8148"
+                  stroke-width="1.2"
+                  fill="none"
+                />
+
+                <circle
+                  cx="38"
+                  cy="38"
+                  r="29"
+                  stroke="#ab8148"
+                  stroke-width="0.8"
+                  fill="none"
+                />
+              </svg>
+
+              <span
+                class="seal-mark"
+                id="sealInitial"
+              >
+                A
+              </span>
+
+            </div>
+
+            <div class="back-eyebrow">
+              Welcome
+            </div>
+
+            <div
+              class="guest-name"
+              id="resultName"
+            >
+              Guest Name
+            </div>
+
+            <div class="table-label">
+              Your Table
+            </div>
+
+            <div
+              class="table-num"
+              id="resultTable"
+            >
+              —
+            </div>
+
+            <div
+              class="table-note"
+              id="resultNote"
+            ></div>
+
+          </div>
+
+
+          <button
+            class="again-btn"
+            id="againBtn"
+            type="button"
+          >
+            Search Again
+          </button>
+
         </div>
-        <div class="back-eyebrow">Welcome</div>
-        <div class="guest-name" id="resultName">Guest Name</div>
-        <svg class="divider" viewBox="0 0 90 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M0 5 H36" stroke="#ab8148" stroke-width="1"/>
-          <circle cx="45" cy="5" r="3" stroke="#ab8148" stroke-width="1" fill="none"/>
-          <path d="M54 5 H90" stroke="#ab8148" stroke-width="1"/>
-        </svg>
-        <div class="table-label">Your Table</div>
-        <div class="table-num" id="resultTable">—</div>
-        <div class="table-note" id="resultNote"></div>
-        <button class="again-btn" id="againBtn">Search Again</button>
+
       </div>
 
     </div>
+
+    <div class="foot-note">
+      With love — see you at the celebration
+    </div>
+
   </div>
 
-  <div class="foot-note">With love — see you at the celebration</div>
-</div>
 
-<script>
-  const input      = document.getElementById('searchInput');
-  const resultsEl  = document.getElementById('results');
-  const emptyHint  = document.getElementById('emptyHint');
-  const cardInner  = document.getElementById('cardInner');
-  const againBtn   = document.getElementById('againBtn');
+  <script>
 
-  const resultName = document.getElementById('resultName');
-  const resultTable= document.getElementById('resultTable');
-  const resultNote = document.getElementById('resultNote');
-  const sealInitial= document.getElementById('sealInitial');
+    const input = document.getElementById("searchInput");
+    const searchForm = document.getElementById("searchForm");
 
-  function normalize(str){
-    return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
-  }
+    const resultsEl = document.getElementById("results");
+    const emptyHint = document.getElementById("emptyHint");
 
-  function renderResults(query){
-    resultsEl.innerHTML = '';
-    const q = normalize(query);
+    const cardInner = document.getElementById("cardInner");
+    const againBtn = document.getElementById("againBtn");
 
-    if(!q){
-      resultsEl.appendChild(emptyHint);
-      return;
+    const suggestedResults =
+      document.getElementById("suggestedResults");
+
+    const suggestionsView =
+      document.getElementById("suggestionsView");
+
+    const guestResultView =
+      document.getElementById("guestResultView");
+
+    const resultName =
+      document.getElementById("resultName");
+
+    const resultTable =
+      document.getElementById("resultTable");
+
+    const resultNote =
+      document.getElementById("resultNote");
+
+    const sealInitial =
+      document.getElementById("sealInitial");
+
+
+    function normalize(str) {
+      return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
     }
 
-    const matches = GUESTS.filter(g => {
-      const normalName = normalize(g.name);
-      
-      if (normalName.includes(q)) return true;
 
-      const reversedName = normalName.split(/\s+/).reverse().join(' ');
-      if (reversedName.includes(q)) return true;
+    function findMatches(query) {
 
-      const queryWords = q.split(/\s+/);
-      return queryWords.every(word => normalName.includes(word));
-    });
+      const q = normalize(query);
 
-    if(matches.length === 0){
-      const div = document.createElement('div');
-      div.className = 'no-match';
-      div.innerHTML = `No guest found matching <strong>"${query}"</strong>. Check the spelling, or ask a member of the wedding party for help.`;
-      resultsEl.appendChild(div);
-      return;
+      if (!q) {
+        return [];
+      }
+
+      return GUESTS.filter(guest => {
+
+        const normalName = normalize(guest.name);
+
+        // Normal name match
+        if (normalName.includes(q)) {
+          return true;
+        }
+
+        // Reversed name match
+        const reversedName = normalName
+          .split(/\s+/)
+          .reverse()
+          .join(" ");
+
+        if (reversedName.includes(q)) {
+          return true;
+        }
+
+        // Match all typed words
+        const queryWords = q.split(/\s+/);
+
+        return queryWords.every(word =>
+          normalName.includes(word)
+        );
+
+      });
     }
 
-    matches.slice(0, 8).forEach(g => {
-      const btn = document.createElement('button');
-      btn.className = 'result-row';
-      btn.innerHTML = `<span>${g.name}</span><span class="arrow">→</span>`;
-      btn.addEventListener('click', () => showResult(g));
-      resultsEl.appendChild(btn);
+
+    function renderResults(query) {
+
+      resultsEl.innerHTML = "";
+
+      if (!query.trim()) {
+        resultsEl.appendChild(emptyHint);
+        return;
+      }
+
+      const matches = findMatches(query);
+
+      if (matches.length === 0) {
+
+        const div = document.createElement("div");
+
+        div.className = "no-match";
+
+        div.innerHTML =
+          `No guest found matching <strong>"${query}"</strong>.`;
+
+        resultsEl.appendChild(div);
+
+        return;
+      }
+
+
+      matches
+        .slice(0, 8)
+        .forEach(guest => {
+
+          const button =
+            document.createElement("button");
+
+          button.type = "button";
+
+          button.className = "result-row";
+
+          button.innerHTML = `
+            <span>${guest.name}</span>
+            <span class="arrow">→</span>
+          `;
+
+          button.addEventListener("click", () => {
+            showResult(guest);
+          });
+
+          resultsEl.appendChild(button);
+
+        });
+    }
+
+
+    function showSuggestedResults(matches) {
+
+      suggestedResults.innerHTML = "";
+
+      suggestionsView.style.display = "block";
+
+      guestResultView.classList.remove("active");
+
+
+      if (matches.length === 0) {
+
+        suggestedResults.innerHTML = `
+          <div class="no-match">
+            No guest found matching your search.
+          </div>
+        `;
+
+      } else {
+
+        matches
+          .slice(0, 8)
+          .forEach(guest => {
+
+            const button =
+              document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+              "suggested-result";
+
+            button.textContent =
+              guest.name;
+
+            button.addEventListener("click", () => {
+              showResult(guest);
+            });
+
+            suggestedResults.appendChild(button);
+
+          });
+      }
+
+
+      // Flip to the back card
+      cardInner.classList.add("revealed");
+    }
+
+
+    function showResult(guest) {
+
+      resultName.textContent =
+        guest.name;
+
+      resultTable.textContent =
+        guest.table || "—";
+
+      resultNote.textContent =
+        guest.note || "";
+
+      sealInitial.textContent =
+        guest.name
+          .trim()
+          .charAt(0)
+          .toUpperCase();
+
+
+      // Hide suggested guest list
+      suggestionsView.style.display = "none";
+
+      // Show selected guest result
+      guestResultView.classList.add("active");
+
+      // Ensure back card is visible
+      cardInner.classList.add("revealed");
+    }
+
+
+    function reset() {
+
+      cardInner.classList.remove("revealed");
+
+      input.value = "";
+
+      suggestedResults.innerHTML = "";
+
+      suggestionsView.style.display = "block";
+
+      guestResultView.classList.remove("active");
+
+      renderResults("");
+
+
+      setTimeout(() => {
+        input.focus();
+      }, 700);
+    }
+
+
+    // Live suggestions on front card
+    input.addEventListener("input", event => {
+      renderResults(event.target.value);
     });
-  }
 
-  function showResult(guest){
-    resultName.textContent = guest.name;
-    resultTable.textContent = guest.table;
-    resultNote.textContent = guest.note || '';
-    sealInitial.textContent = guest.name.trim().charAt(0).toUpperCase();
-    cardInner.classList.add('revealed');
-  }
 
-  function reset(){
-    cardInner.classList.remove('revealed');
-    input.value = '';
-    renderResults('');
-    setTimeout(() => input.focus(), 450);
-  }
+    // Submit using Enter
+    searchForm.addEventListener("submit", event => {
 
-  input.addEventListener('input', (e) => renderResults(e.target.value));
-  againBtn.addEventListener('click', reset);
+      event.preventDefault();
 
-  renderResults('');
-</script>
+      const query = input.value.trim();
+
+      if (!query) {
+        input.focus();
+        return;
+      }
+
+      const matches = findMatches(query);
+
+      // Show suggested guests on the back card
+      showSuggestedResults(matches);
+
+    });
+
+
+    // Search again
+    againBtn.addEventListener("click", reset);
+
+
+    // Initial state
+    renderResults("");
+
+  </script>
 
 </body>
 </html>
